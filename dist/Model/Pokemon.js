@@ -13,10 +13,51 @@ exports.Pokemon = void 0;
 var typeorm_1 = require("typeorm");
 var Pokemon = exports.Pokemon = /** @class */ (function () {
     function Pokemon(name, img, types, stats, moves) {
+        this.name = name;
+        this.img = img;
+        this.types = types;
+        this.stats = stats;
+        this.moves = moves;
     }
+    Pokemon.prototype.getId = function () {
+        return this.id;
+    };
+    Pokemon.prototype.setId = function (id) {
+        this.id = id;
+    };
+    Pokemon.prototype.getName = function () {
+        return this.name;
+    };
+    Pokemon.prototype.setName = function (name) {
+        this.name = name;
+    };
+    Pokemon.prototype.getImg = function () {
+        return this.img;
+    };
+    Pokemon.prototype.setImg = function (img) {
+        this.img = img;
+    };
+    Pokemon.prototype.getTypes = function () {
+        return this.types;
+    };
+    Pokemon.prototype.setTypes = function (types) {
+        this.types = types;
+    };
+    Pokemon.prototype.getStats = function () {
+        return this.stats;
+    };
+    Pokemon.prototype.setStats = function (stats) {
+        this.stats = stats;
+    };
+    Pokemon.prototype.getMoves = function () {
+        return this.moves;
+    };
+    Pokemon.prototype.setMoves = function (moves) {
+        this.moves = moves;
+    };
     __decorate([
-        (0, typeorm_1.PrimaryGeneratedColumn)(),
-        __metadata("design:type", Number)
+        (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
+        __metadata("design:type", String)
     ], Pokemon.prototype, "id", void 0);
     __decorate([
         (0, typeorm_1.Column)(),

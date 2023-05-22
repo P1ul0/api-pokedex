@@ -1,22 +1,27 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { UUID } from "crypto";
+
+import { Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { Pokemon } from "./Pokemon";
 
 
 @Entity()
 export class User {
-    @PrimaryGeneratedColumn()
-    private id!: number;    
+    @PrimaryGeneratedColumn("uuid")
+    private id!: string;    
 
-    @Column()
     private name: string;
 
-    @Column()
+  
     private email: string;
 
-    @Column()
+
     private password: string;
 
-    @Column()
     private gender: string;
+
+    @OneToMany(type => Pokemon, pokemon => pokemon.getId())
+    @JoinColumn({ referencedColumnName: "id" })
+    private pokemon:[];
 
     constructor(name: string, email: string , password: string , gender: string){
         this.name = name;
@@ -55,4 +60,6 @@ export class User {
     public setGender(gender: string): void {
         this.gender = gender;
     }
+
+
 }

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db: 
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pokedex
+    ports:
+      - "5432:5432"
+
+  app: 
+    build: .
+    command: npm run start
+    ports: 
+      - "3000:3000"

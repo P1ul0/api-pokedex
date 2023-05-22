@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 var typeorm_1 = require("typeorm");
+var Pokemon_1 = require("./Pokemon");
 var User = exports.User = /** @class */ (function () {
     function User(name, email, password, gender) {
         this.name = name;
@@ -43,25 +44,14 @@ var User = exports.User = /** @class */ (function () {
         this.gender = gender;
     };
     __decorate([
-        (0, typeorm_1.PrimaryGeneratedColumn)(),
-        __metadata("design:type", Number)
+        (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
+        __metadata("design:type", String)
     ], User.prototype, "id", void 0);
     __decorate([
-        (0, typeorm_1.Column)(),
-        __metadata("design:type", String)
-    ], User.prototype, "name", void 0);
-    __decorate([
-        (0, typeorm_1.Column)(),
-        __metadata("design:type", String)
-    ], User.prototype, "email", void 0);
-    __decorate([
-        (0, typeorm_1.Column)(),
-        __metadata("design:type", String)
-    ], User.prototype, "password", void 0);
-    __decorate([
-        (0, typeorm_1.Column)(),
-        __metadata("design:type", String)
-    ], User.prototype, "gender", void 0);
+        (0, typeorm_1.OneToMany)(function (type) { return Pokemon_1.Pokemon; }, function (pokemon) { return pokemon.getId(); }),
+        (0, typeorm_1.JoinColumn)({ referencedColumnName: "id" }),
+        __metadata("design:type", Array)
+    ], User.prototype, "pokemon", void 0);
     User = __decorate([
         (0, typeorm_1.Entity)(),
         __metadata("design:paramtypes", [String, String, String, String])

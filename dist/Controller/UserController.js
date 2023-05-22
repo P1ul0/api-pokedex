@@ -46,7 +46,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
-var User_1 = require("./../Model/User");
 var core_1 = require("@overnightjs/core");
 var UseServices_1 = require("../Services/UseServices");
 var UserController = exports.UserController = /** @class */ (function () {
@@ -57,34 +56,25 @@ var UserController = exports.UserController = /** @class */ (function () {
     }
     UserController.prototype.registerUsers = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var name, email, password, confirmPassword, gender, user, error_1;
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        name = (_a = req.body, _a.name), email = _a.email, password = _a.password, confirmPassword = _a.confirmPassword, gender = _a.gender;
-                        if (password !== confirmPassword)
-                            throw new Error("As Senhas não são iguais");
-                        user = new User_1.User(name, email, password, gender);
-                        _b.label = 1;
-                    case 1:
-                        _b.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, this.userService.createUser(user)];
-                    case 2:
-                        _b.sent();
-                        return [2 /*return*/, res.status(201).json({ message: "Usuário Criado" })];
-                    case 3:
-                        error_1 = _b.sent();
-                        return [2 /*return*/, res.status(500).json({ message: "Usuário não Cadastrado" })];
-                    case 4: return [2 /*return*/];
+            return __generator(this, function (_a) {
+                //const { name, email, password, confirmPassword, gender } = req.body;
+                //if (password !== confirmPassword) throw new Error("As Senhas não são iguais");
+                //const user: User = new User(name, email, password, gender);
+                try {
+                    //await this.userService.createUser(user);
+                    return [2 /*return*/, res.status(201).json({ message: "Usuário Criado" })];
                 }
+                catch (error) {
+                    return [2 /*return*/, res.status(500).json({ message: "Usuário não Cadastrado" })];
+                }
+                return [2 /*return*/];
             });
         });
     };
-    UserController.prototype.get = function (req, res) {
+    UserController.prototype.getUser = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, res.status(200).json({ message: "Ta pegando" })];
+                return [2 /*return*/, res.status(200).json({})];
             });
         });
     };
@@ -95,11 +85,11 @@ var UserController = exports.UserController = /** @class */ (function () {
         __metadata("design:returntype", Promise)
     ], UserController.prototype, "registerUsers", null);
     __decorate([
-        (0, core_1.Get)("p"),
+        (0, core_1.Get)("get"),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", Promise)
-    ], UserController.prototype, "get", null);
+    ], UserController.prototype, "getUser", null);
     UserController = __decorate([
         (0, core_1.Controller)("users"),
         __metadata("design:paramtypes", [UseServices_1.UserService])
