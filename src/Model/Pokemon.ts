@@ -12,15 +12,15 @@ export class Pokemon {
     private img: string;
 
     @Column()
-    private types: [{}];
+    private types: [String];
 
     @Column()
-    private stats: [{}];
+    private stats: [String];
 
     @Column()
-    private moves: [{}];
+    private moves: [String];
 
-    constructor(name: string, img: string, types: [{}] , stats: [{}], moves: [{}]){
+    constructor(name: string, img: string, types: [String] , stats: [String], moves: [String]){
         this.name = name;
         this.img = img;
         this.types= types;
@@ -54,29 +54,29 @@ public setImg(img: string): void {
 }
 
 
-public getTypes(): [{}] {
+public getTypes(): [String] {
     return this.types;
 }
 
-public setTypes(types: [{}]): void {
+public setTypes(types: [String]): void {
     this.types = types;
 }
 
 
-public getStats(): [{}] {
+public getStats(): [String] {
     return this.stats;
 }
 
-public setStats(stats: [{}]): void {
+public setStats(stats: [String]): void {
     this.stats = stats;
 }
 
 
-public getMoves(): [{}] {
+public getMoves(): [String] {
     return this.moves;
 }
 
-public setMoves(moves: [{}]): void {
+public setMoves(moves: [String]): void {
     this.moves = moves;
 }
 
