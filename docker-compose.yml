@@ -12,6 +12,7 @@ services:
 
   app: 
     build: .
-    command: npm run start
+    command: npm  start
     ports: 
       - "3000:3000"
+    restart: on-failure

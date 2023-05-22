@@ -8,7 +8,7 @@ export class App extends Server {
     constructor(){
         super();
         
-        this.setupMiddleware()
+        //this.setupMiddleware()
         this.addController()
     }
 
@@ -17,13 +17,13 @@ export class App extends Server {
 
       super.addControllers([userController])
     }
-    private setupMiddleware(): void{
+    /*private setupMiddleware(): void{
       this.app.use(bodyParser.json());
       this.app.use(bodyParser.urlencoded({ extended: true }));
   
       
       this.app.use(cors())
-    }
+    }*/
 
     public start(port: number): void {
         this.app.listen(port, () => {

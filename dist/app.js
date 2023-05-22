@@ -14,20 +14,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
 var core_1 = require("@overnightjs/core");
 var UserController_1 = require("./Controller/UserController");
-var body_parser_1 = __importDefault(require("body-parser"));
-var cors_1 = __importDefault(require("cors"));
 var App = /** @class */ (function (_super) {
     __extends(App, _super);
     function App() {
         var _this = _super.call(this) || this;
-        _this.setupMiddleware();
+        //this.setupMiddleware()
         _this.addController();
         return _this;
     }
@@ -35,11 +30,13 @@ var App = /** @class */ (function (_super) {
         var userController = new UserController_1.UserController();
         _super.prototype.addControllers.call(this, [userController]);
     };
-    App.prototype.setupMiddleware = function () {
-        this.app.use(body_parser_1.default.json());
-        this.app.use(body_parser_1.default.urlencoded({ extended: true }));
-        this.app.use((0, cors_1.default)());
-    };
+    /*private setupMiddleware(): void{
+      this.app.use(bodyParser.json());
+      this.app.use(bodyParser.urlencoded({ extended: true }));
+  
+      
+      this.app.use(cors())
+    }*/
     App.prototype.start = function (port) {
         this.app.listen(port, function () {
             console.log('server rodando na porta:', port);
