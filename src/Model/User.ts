@@ -19,9 +19,8 @@ export class User {
 
     private gender: string;
 
-    @OneToMany(type => Pokemon, pokemon => pokemon.getId())
-    @JoinColumn({ referencedColumnName: "id" })
-    private pokemon:[];
+    @OneToMany(()=> Pokemon, pokemon => pokemon.user)
+    pokemons: Pokemon[];
 
     constructor(name: string, email: string , password: string , gender: string){
         this.name = name;
@@ -60,6 +59,8 @@ export class User {
     public setGender(gender: string): void {
         this.gender = gender;
     }
+
+
 
 
 }

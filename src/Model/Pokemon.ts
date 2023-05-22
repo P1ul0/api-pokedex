@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { User } from "./User";
 
 @Entity()
 export class Pokemon {
@@ -19,6 +20,9 @@ export class Pokemon {
 
     @Column()
     private moves: [String];
+
+    @ManyToOne(() => User, (user) => user.pokemons)
+     user:User
 
     constructor(name: string, img: string, types: [String] , stats: [String], moves: [String]){
         this.name = name;
@@ -79,6 +83,7 @@ public getMoves(): [String] {
 public setMoves(moves: [String]): void {
     this.moves = moves;
 }
+
 
 
 }

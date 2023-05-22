@@ -18,25 +18,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
 var core_1 = require("@overnightjs/core");
 var UserController_1 = require("./Controller/UserController");
+var Database_1 = require("./Database/Database");
 var App = /** @class */ (function (_super) {
     __extends(App, _super);
     function App() {
         var _this = _super.call(this) || this;
-        //this.setupMiddleware()
         _this.addController();
+        _this.connectDatabase();
         return _this;
     }
     App.prototype.addController = function () {
         var userController = new UserController_1.UserController();
         _super.prototype.addControllers.call(this, [userController]);
     };
-    /*private setupMiddleware(): void{
-      this.app.use(bodyParser.json());
-      this.app.use(bodyParser.urlencoded({ extended: true }));
-  
-      
-      this.app.use(cors())
-    }*/
+    App.prototype.connectDatabase = function () {
+        Database_1.AppDataSource.initialize()
+            .then(function () { return console.log("DataBase conectada"); })
+            .catch(function (error) { return console.log(error); });
+    };
     App.prototype.start = function (port) {
         this.app.listen(port, function () {
             console.log('server rodando na porta:', port);

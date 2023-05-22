@@ -48,10 +48,9 @@ var User = exports.User = /** @class */ (function () {
         __metadata("design:type", String)
     ], User.prototype, "id", void 0);
     __decorate([
-        (0, typeorm_1.OneToMany)(function (type) { return Pokemon_1.Pokemon; }, function (pokemon) { return pokemon.getId(); }),
-        (0, typeorm_1.JoinColumn)({ referencedColumnName: "id" }),
+        (0, typeorm_1.OneToMany)(function () { return Pokemon_1.Pokemon; }, function (pokemon) { return pokemon.user; }),
         __metadata("design:type", Array)
-    ], User.prototype, "pokemon", void 0);
+    ], User.prototype, "pokemons", void 0);
     User = __decorate([
         (0, typeorm_1.Entity)(),
         __metadata("design:paramtypes", [String, String, String, String])

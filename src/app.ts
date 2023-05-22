@@ -2,14 +2,16 @@ import { Server } from "@overnightjs/core";
 import {  UserController } from "./Controller/UserController";
 import bodyParser from "body-parser";
 import cors from "cors";
-
+import { AppDataSource } from "./Database/Database";
+import { error, log } from "console";
 
 export class App extends Server {
     constructor(){
         super();
-        
-        //this.setupMiddleware()
         this.addController()
+        this.connectDatabase()
+
+       
     }
 
     private addController (){
@@ -17,13 +19,12 @@ export class App extends Server {
 
       super.addControllers([userController])
     }
-    /*private setupMiddleware(): void{
-      this.app.use(bodyParser.json());
-      this.app.use(bodyParser.urlencoded({ extended: true }));
-  
-      
-      this.app.use(cors())
-    }*/
+    
+    private connectDatabase (){
+      AppDataSource.initialize()
+      .then(() => console.log("DataBase conectada"))
+      .catch(error => console.log(error))
+    }
 
     public start(port: number): void {
         this.app.listen(port, () => {

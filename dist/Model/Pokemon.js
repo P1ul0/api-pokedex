@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Pokemon = void 0;
 var typeorm_1 = require("typeorm");
+var User_1 = require("./User");
 var Pokemon = exports.Pokemon = /** @class */ (function () {
     function Pokemon(name, img, types, stats, moves) {
         this.name = name;
@@ -79,6 +80,10 @@ var Pokemon = exports.Pokemon = /** @class */ (function () {
         (0, typeorm_1.Column)(),
         __metadata("design:type", Array)
     ], Pokemon.prototype, "moves", void 0);
+    __decorate([
+        (0, typeorm_1.ManyToOne)(function () { return User_1.User; }, function (user) { return user.pokemons; }),
+        __metadata("design:type", User_1.User)
+    ], Pokemon.prototype, "user", void 0);
     Pokemon = __decorate([
         (0, typeorm_1.Entity)(),
         __metadata("design:paramtypes", [String, String, Array, Array, Array])
